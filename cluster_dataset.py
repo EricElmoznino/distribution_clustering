@@ -20,6 +20,12 @@ def save_cluster_images(sample_clusters, images, dest):
 
 
 # Parse arguments
+class Range(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+    def __eq__(self, other):
+        return self.start <= other <= self.end
 parser = argparse.ArgumentParser()
 req_grp = parser.add_argument_group('required')
 req_grp.add_argument('--data_dir', default=None, help='directory of data to be clustered.')
@@ -28,7 +34,7 @@ cluster_grp.add_argument('--thres', default=0.07, type=float,
                          help='second order distance for acceptance to a cluster.')
 cluster_grp.add_argument('--min_clus', default=5, type=int,
                          help='minimum number of images for creation of a clutser.')
-cluster_grp.add_argument('--max_dist', default=2.0, type=float, choices=(0, 2),
+cluster_grp.add_argument('--max_dist', default=2.0, type=float, choices=[Range(0.0, 2.0)],
                          help='ignore higher variance classes for speed, maximum is 2.')
 cluster_grp.add_argument('--dont_normalize', dest='normalize', action='store_false',
                          help='don\'t normalize features before clustering.')
