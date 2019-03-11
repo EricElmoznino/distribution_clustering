@@ -28,7 +28,7 @@ class ColiseumTests(unittest.TestCase):
             assert cluster_distances[c] == expected_cluster_distances[c]
 
         images = ['img' + str(i).zfill(6) + '.jpg' for i in range(100)]
-        images = [os.path.join(dir, 'images', img) for img in images]
+        images = [os.path.join(dir, 'samples', img) for img in images]
         save_cluster_images(sample_clusters,
                             images=images,
                             dest=os.path.join(dir, 'clustered_from_features'))
@@ -69,7 +69,7 @@ class ColiseumTests(unittest.TestCase):
 
         model = TestModel()
         model.eval()
-        dataloader = DataLoader(TestDataset(os.path.join(dir, 'images')))
+        dataloader = DataLoader(TestDataset(os.path.join(dir, 'samples')))
         _, sample_clusters, _ = cluster_with_model_features(model, dataloader)
 
         save_cluster_images(sample_clusters,
