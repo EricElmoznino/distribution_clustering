@@ -40,7 +40,6 @@ features = []
 for img in tqdm(images):
     img = Image.open(img).convert('RGB')
     img = tr.resize(img, 224)
-    img = tr.center_crop(img, (224, 224))
     img = tr.to_tensor(img)
     img = tr.normalize(img, (0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
     if torch.cuda.is_available():
