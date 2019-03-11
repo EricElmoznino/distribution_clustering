@@ -2,7 +2,7 @@ import time
 import argparse
 
 from distribution_clustering import cluster
-from datasets.BaseDataset import BaseDataset
+from datasets.GloveDataset import GloveDataset
 
 
 # Parse arguments
@@ -28,7 +28,7 @@ parser.set_defaults(normalize=True)
 args = parser.parse_args()
 
 # Load features and do clustering
-dataset = BaseDataset(args.data_dir)
+dataset = GloveDataset(args.data_dir)
 start_time = time.time()
 _, sample_clusters, cluster_distances = cluster(dataset.features(), thres=args.thres, min_clus=args.min_clus,
                                                 max_dist=args.max_dist, normalize=args.normalize)
