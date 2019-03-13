@@ -18,7 +18,7 @@ First, if you want to use the default `BaseDataset` class, the directory structu
 If another structure makes more sense for your purposes, you will need to sublass the `BaseDataset` class and reference your class in `save_dataset_features.py` and `cluster_dataset.py`.
 ```
 - <data_dir>
-    - images
+    - samples
         - <first file>
         - ...
 ```
